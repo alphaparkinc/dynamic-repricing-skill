@@ -1,0 +1,59 @@
+{
+  "name": "dynamic-repricing-skill",
+  "description": "Dynamic pricing and competitive repricer agent skill designed to monitor competitor product prices, evaluate inventory velocity, and output price adjustments.",
+  "version": "1.0.0",
+  "author": "alphaparkinc",
+  "inputs": {
+    "product_sku": {
+      "type": "string",
+      "description": "The target product SKU to reprice."
+    },
+    "current_price": {
+      "type": "number",
+      "description": "Current retail price of the product."
+    },
+    "min_price_floor": {
+      "type": "number",
+      "description": "Minimum acceptable price boundary to protect margins."
+    },
+    "max_price_ceiling": {
+      "type": "number",
+      "description": "Maximum price boundary."
+    },
+    "competitor_prices": {
+      "type": "array",
+      "description": "Scraped prices from competitors for the identical or matchable items.",
+      "items": {
+        "properties": {
+          "source": { "type": "string" },
+          "price": { "type": "number" },
+          "in_stock": { "type": "boolean" }
+        },
+        "required": ["source", "price"]
+      }
+    },
+    "inventory_status": {
+      "type": "object",
+      "properties": {
+        "stock_level": { "type": "integer" },
+        "daily_sales_velocity": { "type": "number" }
+      },
+      "required": ["stock_level", "daily_sales_velocity"]
+    }
+  },
+  "outputs": {
+    "recommended_price": {
+      "type": "number",
+      "description": "Suggested new price to set."
+    },
+    "repricing_reason": {
+      "type": "string",
+      "description": "Detailed strategic explanation for the price adjustment."
+    },
+    "shopify_update_payload": {
+      "type": "object",
+      "description": "API payload ready to push to Shopify/Amazon pricing updates."
+    }
+  },
+  "prompt": "You are a competitive dynamic repricing analyst. Your goal is to maximize contribution margins and inventory turns by dynamically adjusting product prices.\n\nGuideline Rules:\n1. Margin Protection Boundary: Never suggest a price below {{min_price_floor}}, no matter how low competitors price their goods.\n2. Competitor Undercutting: If competitors are in stock and their average price is below {{current_price}}, suggest undercutting the lowest competitor by $0.10 (down to {{min_price_floor}}).\n3. Stockout Bidding: If competitors are out of stock (in_stock is false), or your inventory velocity is extremely high (daily_sales_velocity > 25 units/day), suggest raising the price toward {{max_price_ceiling}} to capture additional margin.\n4. Standard Payload Generation: Construct ready-to-run Shopify/Amazon product price update request JSON payloads."
+}
