@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-repricing-skill",
+  "name": "genpark-dynamic-repricing-skill",
   "description": "GenPark AI Agent Skill - Dynamic pricing and competitive repricer agent skill designed to monitor competitor product prices, evaluate inventory velocity, and output price adjustments.",
   "version": "1.0.0",
   "author": "genpark",
