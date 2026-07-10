@@ -1,4 +1,6 @@
-# Dynamic Pricing & Competitive Repricer Skill
+# dynamic-repricing-skill
+
+> **GenPark AI Agent Skill** -- # Dynamic Pricing & Competitive Repricer Skill
 
 This repository contains the **Dynamic Pricing & Competitive Repricer Skill** — a developer Python SDK client (`repricer.py`), an agent skill configuration interface (`skill.json`), and executable validation examples designed to monitor competitor product prices, evaluate inventory velocity, and output price adjustments to Shopify/Amazon APIs.
 
