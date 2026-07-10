@@ -1,8 +1,8 @@
 {
   "name": "dynamic-repricing-skill",
-  "description": "Dynamic pricing and competitive repricer agent skill designed to monitor competitor product prices, evaluate inventory velocity, and output price adjustments.",
+  "description": "GenPark AI Agent Skill - Dynamic pricing and competitive repricer agent skill designed to monitor competitor product prices, evaluate inventory velocity, and output price adjustments.",
   "version": "1.0.0",
-  "author": "alphaparkinc",
+  "author": "genpark",
   "inputs": {
     "product_sku": {
       "type": "string",
@@ -25,20 +25,36 @@
       "description": "Scraped prices from competitors for the identical or matchable items.",
       "items": {
         "properties": {
-          "source": { "type": "string" },
-          "price": { "type": "number" },
-          "in_stock": { "type": "boolean" }
+          "source": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "in_stock": {
+            "type": "boolean"
+          }
         },
-        "required": ["source", "price"]
+        "required": [
+          "source",
+          "price"
+        ]
       }
     },
     "inventory_status": {
       "type": "object",
       "properties": {
-        "stock_level": { "type": "integer" },
-        "daily_sales_velocity": { "type": "number" }
+        "stock_level": {
+          "type": "integer"
+        },
+        "daily_sales_velocity": {
+          "type": "number"
+        }
       },
-      "required": ["stock_level", "daily_sales_velocity"]
+      "required": [
+        "stock_level",
+        "daily_sales_velocity"
+      ]
     }
   },
   "outputs": {
