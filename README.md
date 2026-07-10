@@ -1,4 +1,4 @@
-# dynamic-repricing-skill
+# genpark-dynamic-repricing-skill
 
 > **GenPark AI Agent Skill** -- # Dynamic Pricing & Competitive Repricer Skill
 
